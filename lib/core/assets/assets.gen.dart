@@ -59,16 +59,16 @@ class $AssetsImagesGen {
   AssetGenImage get imgMyLocation =>
       const AssetGenImage('assets/images/img_my_location.png');
 
-  /// File path: assets/images/logo.png
-  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+  /// File path: assets/images/Logo-Attendify.png
+  AssetGenImage get logo =>
+      const AssetGenImage('assets/images/Logo-Attendify.png');
 
   /// File path: assets/images/logo_code_with_bahri.png
   AssetGenImage get logoCodeWithBahri =>
       const AssetGenImage('assets/images/logo_code_with_bahri.png');
 
-  /// File path: assets/images/logo_white.png
-  AssetGenImage get logoWhite =>
-      const AssetGenImage('assets/images/logo_white.png');
+  /// File path: assets/images/logo.png
+  AssetGenImage get logoWhite => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/see_location.png
   AssetGenImage get seeLocation =>

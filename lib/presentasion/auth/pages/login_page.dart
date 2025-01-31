@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_absensi_app/presentasion/home/pages/main_pages.dart';
+import 'package:flutter_absensi_app/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_absensi_app/presentasion/auth/bloc/login/login_bloc.dart';
+import 'package:flutter_absensi_app/presentasion/home/pages/main_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/core.dart';
@@ -86,12 +89,49 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               const SpaceHeight(104),
-              Button.filled(
-                onPressed: () {
-                  context.pushReplacement(const MainPage());
+              BlocListener<LoginBloc, LoginState>(
+                listener: (context, state) {
+                  state.maybeWhen(
+                    orElse: () {},
+                    success: (data) {
+                      AuthLocalDatasource().saveAuthData(data);
+                      context.pushReplacement(const MainPage());
+                    },
+                    error: (message) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(message),
+                          backgroundColor: AppColors.red,
+                        ),
+                      );
+                    },
+                  );
                 },
-                label: 'Sign In',
-              )
+                child: BlocBuilder<LoginBloc, LoginState>(
+                    builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return Button.filled(
+                        onPressed: () {
+                          // context.pushReplacement(const MainPage());
+                          context.read<LoginBloc>().add(
+                                LoginEvent.login(
+                                  emailController.text,
+                                  passwordController.text,
+                                ),
+                              );
+                        },
+                        label: 'Sign In',
+                      );
+                    },
+                    loading: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                  );
+                }),
+              ),
             ],
           ),
         ),

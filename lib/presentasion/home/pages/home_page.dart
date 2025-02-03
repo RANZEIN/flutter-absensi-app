@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_absensi_app/data/datasources/auth_local_datasource.dart';
-import 'package:flutter_absensi_app/presentasion/home/pages/setting_page.dart';
+import 'package:flutter_absensi_app/presentasion/home/pages/register_face_attendance_page.dart';
 
 import '../../../core/core.dart';
 import '../widgets/menu_button.dart';
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                   const SpaceWidth(12.0),
                   const Expanded(
                     child: Text(
-                      'Hello, Chopper Sensei',
+                      'Hello, Ranzein',
                       style: TextStyle(
                         fontSize: 18.0,
                         color: AppColors.white,
@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
               faceEmbedding != null
                   ? Button.filled(
                       onPressed: () {
-                        context.push(const SettingPage());
+                        context.push(const RegisterFaceAttendencePage());
                       },
                       label: 'Attendance Using Face ID',
                       icon: Assets.icons.attendance.svg(),

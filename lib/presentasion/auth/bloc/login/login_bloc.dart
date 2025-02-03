@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_absensi_app/data/datasources/auth_remote_datasource.dart';
 import 'package:flutter_absensi_app/data/models/response/auth_response_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dartz/dartz.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

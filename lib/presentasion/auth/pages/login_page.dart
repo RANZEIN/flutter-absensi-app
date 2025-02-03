@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_absensi_app/data/datasources/auth_local_datasource.dart';
 import 'package:flutter_absensi_app/presentasion/auth/bloc/login/login_bloc.dart';
-import 'package:flutter_absensi_app/presentasion/home/pages/main_page.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/core.dart';
+import '../../home/pages/main_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPage();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPage extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
   bool isShowPassword = false;
@@ -44,7 +45,7 @@ class _LoginPage extends State<LoginPage> {
             children: [
               const SpaceHeight(50),
               Image.asset(
-                Assets.images.logo.path,
+                Assets.images.logoAttendify.path,
                 width: MediaQuery.of(context).size.width,
                 height: 100,
               ),

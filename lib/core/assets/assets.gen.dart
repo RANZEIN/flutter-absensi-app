@@ -52,6 +52,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/bg_home.png
   AssetGenImage get bgHome => const AssetGenImage('assets/images/bg_home.png');
 
+  /// File path: assets/images/bg_home1.png
+  AssetGenImage get bgHome1 =>
+      const AssetGenImage('assets/images/bg_home1.png');
+
   /// File path: assets/images/failed.png
   AssetGenImage get failed => const AssetGenImage('assets/images/failed.png');
 
@@ -59,16 +63,9 @@ class $AssetsImagesGen {
   AssetGenImage get imgMyLocation =>
       const AssetGenImage('assets/images/img_my_location.png');
 
-  /// File path: assets/images/Logo-Attendify.png
-  AssetGenImage get logo =>
-      const AssetGenImage('assets/images/Logo-Attendify.png');
-
-  /// File path: assets/images/logo_code_with_bahri.png
-  AssetGenImage get logoCodeWithBahri =>
-      const AssetGenImage('assets/images/logo_code_with_bahri.png');
-
-  /// File path: assets/images/logo.png
-  AssetGenImage get logoWhite => const AssetGenImage('assets/images/logo.png');
+  /// File path: assets/images/logo_attendify.png
+  AssetGenImage get logoAttendify =>
+      const AssetGenImage('assets/images/logo_attendify.png');
 
   /// File path: assets/images/see_location.png
   AssetGenImage get seeLocation =>
@@ -80,11 +77,10 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
         bgHome,
+        bgHome1,
         failed,
         imgMyLocation,
-        logo,
-        logoCodeWithBahri,
-        logoWhite,
+        logoAttendify,
         seeLocation,
         success
       ];
@@ -140,6 +136,10 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const String mobileFaceNet = 'assets/mobile_face_net.tflite';
+
+  /// List of all assets
+  static List<String> get values => [mobileFaceNet];
 }
 
 class AssetGenImage {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_absensi_app/presentasion/auth/bloc/login/logout/logout_bloc.dart';
+import 'package:flutter_absensi_app/presentasion/auth/bloc/logout/logout_bloc.dart';
+
 import 'package:flutter_absensi_app/presentasion/auth/pages/login_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

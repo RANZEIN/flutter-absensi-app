@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_absensi_app/data/datasources/auth_local_datasource.dart';
-import 'package:flutter_absensi_app/presentasion/auth/pages/login_page.dart';
 import 'package:flutter_absensi_app/presentasion/home/pages/main_page.dart';
 
 import '../../../core/core.dart';
+import 'login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -30,10 +30,10 @@ class _SplashPageState extends State<SplashPage> {
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.all(50.0),
-                  child: Assets.images.logoWhite.image(),
+                  child: Assets.images.logoAttendify.image(),
                 ),
                 const Spacer(),
-                Assets.images.logoCodeWithBahri.image(height: 70),
+                // Assets.images.logoCodeWithBahri.image(height: 70),
                 const SpaceHeight(20.0),
               ],
             );
@@ -56,10 +56,10 @@ class _SplashPageState extends State<SplashPage> {
               const Spacer(),
               Padding(
                 padding: const EdgeInsets.all(50.0),
-                child: Assets.images.logoWhite.image(),
+                child: Assets.images.logoAttendify.image(),
               ),
               const Spacer(),
-              Assets.images.logoCodeWithBahri.image(height: 70),
+              // Assets.images.logoCodeWithBahri.image(height: 70),
               const SpaceHeight(20.0),
             ],
           );

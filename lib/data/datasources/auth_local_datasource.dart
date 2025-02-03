@@ -1,36 +1,40 @@
-import 'dart:convert';
-
 import 'package:flutter_absensi_app/data/models/response/auth_response_model.dart';
+import 'package:flutter_absensi_app/data/models/response/user_response_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthLocalDatasource {
-  static const String _authKey = 'auth_data';
-
-  /// Save the auth data to local storage as JSON string.
   Future<void> saveAuthData(AuthResponseModel data) async {
     final pref = await SharedPreferences.getInstance();
-    await pref.setString(_authKey, jsonEncode(data.toMap()));
+    await pref.setString('auth_data', data.toJson());
   }
 
-  /// Remove auth data from local storage.
+  Future<void> updateAuthData(UserResponseModel data) async {
+    final pref = await SharedPreferences.getInstance();
+    final authData = await getAuthData();
+    if (authData != null) {
+      final updatedData = authData.copyWith(user: data.user);
+      await pref.setString('auth_data', updatedData.toJson());
+    }
+  }
+
   Future<void> removeAuthData() async {
     final pref = await SharedPreferences.getInstance();
-    await pref.remove(_authKey);
+    await pref.remove('auth_data');
   }
 
-  /// Retrieve authentication data from local storage.
   Future<AuthResponseModel?> getAuthData() async {
     final pref = await SharedPreferences.getInstance();
-    final data = pref.getString(_authKey);
+    final data = pref.getString('auth_data');
     if (data != null) {
       return AuthResponseModel.fromJson(data);
+    } else {
+      return null;
     }
-    return null;
   }
 
-  /// Check if the user is authenticated (has auth data).
   Future<bool> isAuth() async {
     final pref = await SharedPreferences.getInstance();
-    return pref.containsKey(_authKey);
+    final data = pref.getString('auth_data');
+    return data != null;
   }
 }

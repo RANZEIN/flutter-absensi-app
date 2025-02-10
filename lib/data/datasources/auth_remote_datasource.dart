@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:camera/camera.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_absensi_app/core/constants/variables.dart';
 import 'package:flutter_absensi_app/data/datasources/auth_local_datasource.dart';
@@ -68,5 +69,21 @@ class AuthRemoteDatasource {
     } else {
       return const Left('Failed to update profile');
     }
+  }
+
+  Future<void> updateFcmToken(String fcmToken) async {
+    final authData = await AuthLocalDatasource().getAuthData();
+    final url = Uri.parse('${Variables.baseUrl}/api/update-fcm-token');
+    await http.post(
+      url,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${authData?.token}',
+      },
+      body: jsonEncode({
+        'fcm_token': fcmToken,
+      }),
+    );
   }
 }

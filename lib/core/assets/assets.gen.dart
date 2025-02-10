@@ -22,8 +22,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/back.svg
   SvgGenImage get back => const SvgGenImage('assets/icons/back.svg');
 
+  /// File path: assets/icons/calendar.svg
+  SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
+
   /// File path: assets/icons/email.svg
   SvgGenImage get email => const SvgGenImage('assets/icons/email.svg');
+
+  /// File path: assets/icons/image.svg
+  SvgGenImage get image => const SvgGenImage('assets/icons/image.svg');
+
+  /// File path: assets/icons/location.svg
+  SvgGenImage get location => const SvgGenImage('assets/icons/location.svg');
 
   /// Directory path: assets/icons/menu
   $AssetsIconsMenuGen get menu => const $AssetsIconsMenuGen();
@@ -42,8 +51,17 @@ class $AssetsIconsGen {
   SvgGenImage get reverse => const SvgGenImage('assets/icons/reverse.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [attendance, back, email, notificationRounded, password, reverse];
+  List<SvgGenImage> get values => [
+        attendance,
+        back,
+        calendar,
+        email,
+        image,
+        location,
+        notificationRounded,
+        password,
+        reverse
+      ];
 }
 
 class $AssetsImagesGen {
@@ -52,10 +70,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/bg_home.png
   AssetGenImage get bgHome => const AssetGenImage('assets/images/bg_home.png');
 
-  /// File path: assets/images/bg_home1.png
-  AssetGenImage get bgHome1 =>
-      const AssetGenImage('assets/images/bg_home1.png');
-
   /// File path: assets/images/failed.png
   AssetGenImage get failed => const AssetGenImage('assets/images/failed.png');
 
@@ -63,9 +77,16 @@ class $AssetsImagesGen {
   AssetGenImage get imgMyLocation =>
       const AssetGenImage('assets/images/img_my_location.png');
 
-  /// File path: assets/images/logo_attendify.png
-  AssetGenImage get logoAttendify =>
-      const AssetGenImage('assets/images/logo_attendify.png');
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/logo_code_with_bahri.png
+  AssetGenImage get logoCodeWithBahri =>
+      const AssetGenImage('assets/images/logo_code_with_bahri.png');
+
+  /// File path: assets/images/logo_white.png
+  AssetGenImage get logoWhite =>
+      const AssetGenImage('assets/images/logo_white.png');
 
   /// File path: assets/images/see_location.png
   AssetGenImage get seeLocation =>
@@ -77,10 +98,11 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
         bgHome,
-        bgHome1,
         failed,
         imgMyLocation,
-        logoAttendify,
+        logo,
+        logoCodeWithBahri,
+        logoWhite,
         seeLocation,
         success
       ];
@@ -172,7 +194,7 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = true,
+    bool gaplessPlayback = false,
     bool isAntiAlias = false,
     String? package,
     FilterQuality filterQuality = FilterQuality.low,

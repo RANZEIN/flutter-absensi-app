@@ -10,8 +10,8 @@ import 'package:image/image.dart' as img;
 class Recognizer {
   late Interpreter interpreter;
   late InterpreterOptions _interpreterOptions;
-  static const int widht_ = 112;
-  static const int height_ = 112;
+  static const int WIDTH = 112;
+  static const int HEIGHT = 112;
 
   String get modelName => 'assets/mobile_face_net.tflite';
 
@@ -34,15 +34,15 @@ class Recognizer {
 
   List<dynamic> imageToArray(img.Image inputImage) {
     img.Image resizedImage =
-        img.copyResize(inputImage, width: widht_, height: height_);
+        img.copyResize(inputImage, width: WIDTH, height: HEIGHT);
     List<double> flattenedList = resizedImage.data!
         .expand((channel) => [channel.r, channel.g, channel.b])
         .map((value) => value.toDouble())
         .toList();
     Float32List float32Array = Float32List.fromList(flattenedList);
     int channels = 3;
-    int height = height_;
-    int width = widht_;
+    int height = HEIGHT;
+    int width = WIDTH;
     Float32List reshapedArray = Float32List(1 * height * width * channels);
     for (int c = 0; c < channels; c++) {
       for (int h = 0; h < height; h++) {
@@ -66,6 +66,7 @@ class Recognizer {
     List output = List.filled(1 * 192, 0).reshape([1, 192]);
 
     //TODO performs inference
+    final runs = DateTime.now().millisecondsSinceEpoch;
     interpreter.run(input, output);
     // final run = DateTime.now().millisecondsSinceEpoch - runs;
     // print('Time to run inference: $run ms$output');
@@ -95,13 +96,7 @@ class Recognizer {
   Future<bool> isValidFace(List<double> emb) async {
     final authData = await AuthLocalDatasource().getAuthData();
     final faceEmbedding = authData!.user!.faceEmbedding;
-    PairEmbedding pair = findNearest(
-        emb,
-        faceEmbedding!
-            .split(',')
-            .map((e) => double.parse(e))
-            .toList()
-            .cast<double>());
+    PairEmbedding pair = findNearest(emb, faceEmbedding!.split(',').map((e) => double.parse(e)).toList().cast<double>());
     print("distance= ${pair.distance}");
     if (pair.distance < 1.0) {
       return true;
